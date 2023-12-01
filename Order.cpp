@@ -1,5 +1,6 @@
 #include "Order.h"
 #include <iostream>
+#include<fstream>
 using namespace std;
 
 int Order::orderCount = 1;
@@ -10,8 +11,6 @@ Order::Order(int _CustomerID)
     CustomerID = CustomerID;
     itemCount = 0;
     TotalPrice = 0;
-    itemCount = 0;
-    TotalPrice = 0;
     OrderStatus = "False";
 }
 Order::~Order()
@@ -20,7 +19,7 @@ Order::~Order()
     // The destructor is automatically called when an Order object goes out of scope or is explicitly deleted
 }
 
-void Order::AddItem(MenuItem * item)
+void Order::AddItem(MenuItem* item)
 {
     this->ItemsOrdered[itemCount] = item;
     this->itemCount++;
@@ -29,9 +28,11 @@ void Order::AddItem(MenuItem * item)
 // now is the function to remove the items from order list
 void Order::RemoveItem(MenuItem* item)
 {
-    for (int i = 0; i < this->itemCount; i++) {
-        if (ItemsOrdered[i]->getItemId() == item->getItemId()) {
-            for (int j = i;j < this->itemCount - 1;j++)
+    for (int i = 0; i < this->itemCount; i++) 
+    {
+        if (ItemsOrdered[i]->getItemId() == item->getItemId()) 
+        {
+            for (int j = i; j < this->itemCount - 1; j++)
             {
                 this->ItemsOrdered[j] = this->ItemsOrdered[j + 1];
             }
@@ -43,7 +44,8 @@ void Order::RemoveItem(MenuItem* item)
 void Order::CalculateTotal()
 {
     this->TotalPrice = 0;
-    for (int i = 0; i < this->itemCount; i++) {
+    for (int i = 0; i < this->itemCount; i++) 
+    {
         this->TotalPrice += this->ItemsOrdered[i]->getItemPrice();
     }
 }
@@ -58,4 +60,31 @@ void Order::CancelOrder()
 {
     OrderStatus = "False";
     cout << "Order canceled. Order ID: " << OrderID << endl;
+}
+
+void Order::SaveOrderToFile() const 
+{
+    ofstream file("orders.txt",ios::app);
+
+    if (file.is_open()) 
+    {
+        // Write order details
+        file << "Order ID: " << OrderID << endl;
+        file << "Order Status: " << OrderStatus << endl;
+        //file << "User Type: " << userType << std::endl;
+        file << "Items Ordered:" << endl;
+        int i = 0;
+        for (int i = 0; i < this->itemCount; i++)
+        {
+            file << "Item " << i + 1 << ": " << ItemsOrdered[i]->getItemName() << " - $" << ItemsOrdered[i]->getItemPrice() << endl;
+        }
+
+        file << "Total Price: $" << TotalPrice << endl;
+        file << "------------------------------------------" << endl;
+
+        file.close();
+    }
+    else {
+        std::cout << "Unable to open the file for saving the order." << endl;
+    }
 }
