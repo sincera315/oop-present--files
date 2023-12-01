@@ -150,7 +150,7 @@ Customer::~Customer() {}
 
 void Customer::ViewMenu() const
 {
-    this->menu->ViewMenu(this->userType);
+    this->menu->ViewMenu(type);
 }
 
 void Customer::PlaceOrder() const
