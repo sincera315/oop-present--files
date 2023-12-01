@@ -22,5 +22,6 @@ public:
 	void ConfirmOrder();
 	void CancelOrder();
 	void SaveOrderToFile() const;
+	void OrderHistory();
 
 };
