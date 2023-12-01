@@ -10,7 +10,6 @@ Rating::Rating() : User()
     CustomerID = userID;
     Score = 0;
     Comment = " ";
-    RatingID++;
     // Default constructor implementation
 }
 
@@ -30,29 +29,30 @@ void Rating::Rate()
     // this portion will give the rating of the entire program.
     cout << "Enter Score (1-5): ";
     cin >> Score;
-
-    cout << "Enter Score: ";
-    cin >> Score;
     if (Score == 1)
     {
         rating = "*";
-        cout << rating;
+        cout << rating << endl;
     }
     else if (Score == 2)
     {
         rating = "**";
+        cout << rating << endl;
     }
     else if (Score == 3)
     {
         rating = "***";
+        cout << rating << endl;
     }
     else if (Score == 4)
     {
         rating = "****";
+        cout << rating << endl;
     }
     else if (Score == 5)
     {
         rating = "*****";
+        cout << rating << endl;
     }
 
 
@@ -60,10 +60,11 @@ void Rating::Rate()
     /////////////////////////////////
     cin.ignore(); // Clear the input buffer
     getline(cin, Comment);
+    ++RatingID;
 }
 void Rating::SaveToFile()
 {
-    ofstream outputFile("ratings.txt", ios::app);
+    ofstream outputFile("rating.txt", ios::app);
 
     if (!outputFile.is_open())
     {
