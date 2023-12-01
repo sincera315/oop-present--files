@@ -1,22 +1,24 @@
 #pragma once
-#include "MenuItem.h"
-class Menu
+#include <iostream>
+#include"Menu.h"
+#include <string>
+using namespace std;
+
+class User
 {
-private:
-	MenuItem** itemList;  // 2d pointer array 
-	int itemCount;  // item counter 
+protected:
+    Menu* menu;
+    static int userCount;
+    int userID;
+    string userName;
+    string password;
+    string userType;
 public:
-	Menu(); 
-	void AddMenuItem();
-	void AddMenuItem(string, string, int, int, string);
-	void RemoveItem(int );
-	void UpdateStock(int, int);
-	void ViewMenu(string customerType = "faculty");
-	void initializeStudentMenu();
-	void initializeFacultyMenu();
-	void initializeNonFacultyMenu();
-	MenuItem* getItemPtr(int);
-
-	
+    User();
+    ~User();
+    User(const string& userName, const string& password, const string& userType);
+    void displayInfo() const;
+    virtual void showMenu() const;
+    const string& getUserType() const;
+    const int getuserid() const;
 };
-
