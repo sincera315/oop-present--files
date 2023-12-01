@@ -21,5 +21,6 @@ public:
 	void CalculateTotal();
 	void ConfirmOrder();
 	void CancelOrder();
+	void SaveOrderToFile() const;
 
 };
