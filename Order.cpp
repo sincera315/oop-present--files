@@ -88,3 +88,27 @@ void Order::SaveOrderToFile() const
         std::cout << "Unable to open the file for saving the order." << endl;
     }
 }
+
+void Order::OrderHistory()
+{
+    cout << "*******************************************************" << endl;
+    ifstream file("orders.txt");
+
+    if (file.is_open())
+    {
+        cout << "Order History:" << endl;
+        string line;
+
+        while (getline(file, line))
+        {
+            cout << line << endl;
+        }
+
+        file.close();
+    }
+    else
+    {
+        cout << "Unable to open the file for reading order history." << endl;
+    }
+    cout << "*******************************************************" << endl;
+}
