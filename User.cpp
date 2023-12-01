@@ -2,7 +2,8 @@
 
 int User::userCount = 1;
 
-User::User() : userName("DefaultUser"), password("DefaultPassword"), userType("DefaultUserType") {
+User::User() : userName("DefaultUser"), password("DefaultPassword"), userType("DefaultUserType") 
+{
     userID = userCount;
 }
 User::~User() {
