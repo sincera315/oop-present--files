@@ -4,7 +4,7 @@
 
 Customer::Customer()
 {
-    menu = new Menu();
+    //menu = new Menu();
     int choice1 = 0, choice2 = 0;
     int loop_variable = 1;
     cout << "You are now logged in as a customer. PRESS" << endl;
