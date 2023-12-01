@@ -1,5 +1,6 @@
 #include "Customer.h"
 #include "Order.h"
+#include "Rating.h"
 
 Customer::Customer()
 {
@@ -154,11 +155,13 @@ void Customer::ViewMenu() const
 
 void Customer::PlaceOrder() const
 {
-
-    //composition.
+    // Composition.
     Order order1(this->userID);
     int choice = 0;
     int confirm = 0;
+    int itemID;
+    MenuItem* ptr = nullptr; // Declare the pointer outside the switch statement.
+
     do {
         cout << "_____________________________________________________________" << endl;
         cout << "Enter the following number for the choice you want: " << endl;
@@ -166,25 +169,22 @@ void Customer::PlaceOrder() const
         cout << "2 Remove Items" << endl;
         cout << "3 Calculate Total" << endl;
         cout << "4 Order Confirmation" << endl;
-        cout << "5 Exit" << endl;  // Added option to exit
+        cout << "5 Exit" << endl;
         cout << "_______________________________________________" << endl;
         cin >> choice;
 
         switch (choice)
         {
         case 1:
-
-            int itemID;
             cout << "Enter ItemID:";
             cin >> itemID;
-            MenuItem* ptr = this->menu->getItemPtr(itemID);
+            ptr = this->menu->getItemPtr(itemID);
             order1.AddItem(ptr);
             break;
         case 2:
-            int itemID;
             cout << "Enter ItemID:";
             cin >> itemID;
-            MenuItem* ptr = this->menu->getItemPtr(itemID);
+            ptr = this->menu->getItemPtr(itemID);
             order1.RemoveItem(ptr);
             break;
         case 3:
@@ -200,7 +200,7 @@ void Customer::PlaceOrder() const
             else
             {
                 order1.CancelOrder();
-                //it will then further move through file handling.
+                // It will then further move through file handling.
             }
             break;
         case 5:
@@ -210,9 +210,8 @@ void Customer::PlaceOrder() const
             cout << "Invalid choice. Please try again." << endl;
         }
     } while (choice != 5);
-
-
 }
+
 
 void Customer::view_order_history() const
 {
@@ -224,10 +223,10 @@ void Customer::log_out() const
     cout << "Logging out user: " << endl;
 }
 
-//void Customer::rate() const
-//{
-//    Rating rating;
-//    rating.Rate();
-//    rating.SaveToFile();
-//
-//}
+void Customer::rate() const
+{
+    Rating rating;
+    rating.Rate();
+    rating.SaveToFile();
+
+}
