@@ -11,7 +11,7 @@ void Administrator::AddMenuItem() {
 }
 void Administrator::RemoveMenueItem() {
 	int item_id;
-    cout << "Enter Item ID you want to remove:";
+	cout << "Enter Item ID you want to remove:";
 	cin >> item_id;
 	this->menu->RemoveItem(item_id);
 }
