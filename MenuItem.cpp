@@ -3,35 +3,51 @@
 // STATIC VARIABLE INITILAIZED 
 int MenuItem::itemCount = 0;
 
-
-// default constructor 
-MenuItem::MenuItem()
-{
-	itemId = itemCount;
-	cout << "Enter item Name:";
-	cin >> itemName;
-	cout << "Enter item Description:";
-	cin>>itemDescription;
-	cout << "Enter the price:";
-	cin>>price;
-	cout << "Enter the quantity in stock:";
-	cin>>quantityInStock;
-	cout << "Enter the Customer Type:";
-	cin>>customerType;
+// default constructor (not recommended for initializing menu items)
+MenuItem::MenuItem() {
+	this->itemId = itemCount;
 	itemCount++;
-
 }
-// paremetrized constructor 
-MenuItem::MenuItem(string _itemName, string _itemDescription, int _price, int _quantityInStock, string _customerType)
-{
+
+// parameterized constructor (recommended for initializing menu items)
+MenuItem::MenuItem(string _itemName, string _itemDescription, int _price, int _quantityInStock, string _customerType) {
 	this->itemId = itemCount;
 	this->itemName = _itemName;
 	this->itemDescription = _itemDescription;
 	this->price = _price;
 	this->quantityInStock = _quantityInStock;
 	this->customerType = _customerType;
-	this->itemCount++;
+	itemCount++;
 }
+
+// default constructor 
+//MenuItem::MenuItem()
+//{
+//	this->itemId = itemCount;
+//	cout << "Enter item Name:";
+//	cin >> itemName;
+//	cout << "Enter item Description:";
+//	cin >> itemDescription;
+//	cout << "Enter the price:";
+//	cin >> price;
+//	cout << "Enter the quantity in stock:";
+//	cin >> quantityInStock;
+//	cout << "Enter the Customer Type:";
+//	cin >> customerType;
+//	itemCount++;
+//
+//}
+// paremetrized constructor 
+//MenuItem::MenuItem(string _itemName, string _itemDescription, int _price, int _quantityInStock, string _customerType)
+//{
+//	this->itemId = itemCount;
+//	this->itemName = _itemName;
+//	this->itemDescription = _itemDescription;
+//	this->price = _price;
+//	this->quantityInStock = _quantityInStock;
+//	this->customerType = _customerType;
+//	this->itemCount++;
+//}
 
 
 bool MenuItem::UpdateStock(int count) {
@@ -56,7 +72,7 @@ int MenuItem::getItemId() {
 
 void  MenuItem::setName(string _name)
 {
-	this->itemName=_name;
+	this->itemName = _name;
 }
 string MenuItem::getItemName()
 {
