@@ -4,7 +4,7 @@
 
 Customer::Customer()
 {
-    //menu = new Menu();
+    menu = new Menu();
     int choice1 = 0, choice2 = 0;
     int loop_variable = 1;
     cout << "You are now logged in as a customer. PRESS" << endl;
@@ -170,7 +170,8 @@ void Customer::PlaceOrder() const
         cout << "2 Remove Items" << endl;
         cout << "3 Calculate Total" << endl;
         cout << "4 Order Confirmation" << endl;
-        cout << "5 Exit" << endl;
+        cout << "5 View Order History" << endl;
+        cout << "6 Exit" << endl;
         cout << "_______________________________________________" << endl;
         cin >> choice;
 
@@ -197,6 +198,7 @@ void Customer::PlaceOrder() const
             if (confirm == 1)
             {
                 order1.ConfirmOrder();
+                order1.SaveOrderToFile();
             }
             else
             {
@@ -205,8 +207,16 @@ void Customer::PlaceOrder() const
             }
             break;
         case 5:
-            cout << "Exiting the order menu." << endl;
-            break;
+            {
+                cout << "view order history" << endl;
+                view_order_history();
+                break;
+            }
+        case 6:
+            {
+                cout << "Exiting the order menu." << endl;
+                break;
+            }
         default:
             cout << "Invalid choice. Please try again." << endl;
         }
@@ -216,7 +226,11 @@ void Customer::PlaceOrder() const
 
 void Customer::view_order_history() const
 {
+    Order order2(this->userID);
     cout << "Viewing order history for user: " << endl;
+    order2.OrderHistory();
+
+
 }
 
 void Customer::log_out() const
