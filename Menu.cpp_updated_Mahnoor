@@ -185,24 +185,31 @@ void Menu::UpdateStock(int itemID, int quantity) {
     }
 }
 void Menu::initializeStudentMenu() {
+
     this->AddMenuItem("Bbq Pizza", "", 1200, 5, "student");
     this->AddMenuItem("Zinger Burger", "", 360, 7, "student");
-
-    // Add other student menu items, specifying "student" as the customerType
+    this->AddMenuItem("Tikka Boti", "", 200, 3, "student");
+    this->AddMenuItem("Chow Mein", "", 360, 1, "student");
+    this->AddMenuItem("Loaded Fries", "", 150, 6, "student");
+    this->AddMenuItem("Afghani Burger", "", 180, 6, "student");
 }
-
 void Menu::initializeFacultyMenu() {
     this->AddMenuItem("Pizza", "", 800, 5, "faculty");
     this->AddMenuItem("Zinger Burger", "", 360, 7, "faculty");
+    this->AddMenuItem("Tikka Boti", "", 200, 3, "faculty");
+    this->AddMenuItem("Shrimp Fried Rice", "", 360, 1, "faculty");
+    this->AddMenuItem("Loaded Fries", "", 150, 6, "faculty");
 
-    // Add other faculty menu items, specifying "faculty" as the customerType
 }
-
 void Menu::initializeNonFacultyMenu() {
+
     this->AddMenuItem("Pizza", "", 800, 5, "nonfaculty");
     this->AddMenuItem("Zinger Burger", "", 360, 7, "nonfaculty");
-
-    // Add other non-faculty menu items, specifying "nonfaculty" as the customerType
+    this->AddMenuItem("Tikka Boti", "", 200, 3, "nonfaculty");
+    this->AddMenuItem("Shrimp Fried Rice", "", 360, 1, "nonfaculty");
+    this->AddMenuItem("Loaded Fries", "", 150, 6, "nonfaculty");
+    this->AddMenuItem("Chocolate Cake", "", 220, 6, "nonfaculty");
+    this->AddMenuItem("Egg Fried Rice", "", 330, 6, "nonfaculty");
 }
 
 
