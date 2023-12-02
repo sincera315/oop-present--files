@@ -5,7 +5,7 @@
 using namespace std;
 class MenuItem
 {
-private:
+public:
 	int itemId;
 	string itemName;
 	string itemDescription;
@@ -15,7 +15,7 @@ private:
 	static int itemCount;
 public:
 	MenuItem(); // default constructor
-	MenuItem( string _itemName, string _ItemDescription, int _price, int _quantityInStock, string _CustomerType);
+	MenuItem(string _itemName, string _ItemDescription, int _price, int _quantityInStock, string _CustomerType);
 	bool UpdateStock(int);
 	friend ostream& operator<<(ostream& out, const MenuItem& obj) {
 		cout << "Item ID: " << obj.itemId << endl;
