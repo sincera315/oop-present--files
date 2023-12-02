@@ -64,7 +64,7 @@ void Rating::Rate()
 }
 void Rating::SaveToFile()
 {
-    ofstream outputFile("rating.txt", ios::app);
+    ofstream outputFile("ratings1.txt", ios::app);
 
     if (!outputFile.is_open())
     {
