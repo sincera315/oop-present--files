@@ -48,6 +48,7 @@ void Order::CalculateTotal()
     {
         this->TotalPrice += this->ItemsOrdered[i]->getItemPrice();
     }
+    cout << "The Total price is as follows:" <<TotalPrice<< endl;
 }
 
 void Order::ConfirmOrder()
