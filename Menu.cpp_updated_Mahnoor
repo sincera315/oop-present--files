@@ -1,0 +1,208 @@
+// Menu.cpp
+#include "Menu.h"
+#include<iostream>
+using namespace std;
+//updated version.
+Menu::Menu() 
+{
+    this->itemList = new MenuItem * [1000];
+    for (int i = 0; i < 1000; i++) 
+    {
+        this->itemList[i] = nullptr; // Initialize each pointer to null
+    }
+
+    this->itemCount = 0;
+    this->initializeStudentMenu();
+    this->initializeFacultyMenu();
+    this->initializeNonFacultyMenu();
+}
+//Menu::Menu() {
+//    this->itemList = new MenuItem * [1000];
+//    for (int i = 0; i < 1000; ++i) 
+//    {
+//        this->itemList[i] = nullptr; // Initialize each pointer to null
+//    }
+//    this->itemCount = 2;
+//    this->initializeStudentMenu(); // Set itemCount based on initialized items
+//    this->initializeFacultyMenu();
+//    this->initializeNonFacultyMenu();
+//}
+
+Menu::~Menu() {
+    for (int i = 0; i < itemCount; ++i) 
+    {
+        delete itemList[i];
+    }
+    delete[] itemList;
+}
+
+void Menu::ViewMenu(string userType) 
+{
+    if  (userType == "student") 
+    {
+        cout << "Now displaying the student specific menu:" << endl;
+        for (int i = 0; i < this->itemCount; i++) 
+        {
+            if (this->itemList[i]->getCustomerType() == userType) 
+            {
+                cout << "*****************************************" << endl;
+                cout << *this->itemList[i];
+            }
+        }
+    }
+    else if (userType == "nonfaculty")
+    {
+        cout << "Now displaying the nonfaculty specific menu:" << endl;
+        for (int i = 0; i < this->itemCount; i++)
+        {
+            if (this->itemList[i]->getCustomerType() == userType)
+            {
+                cout << "*****************************************" << endl;
+                cout << *this->itemList[i];
+            }
+        }
+    }
+    else if (userType == "faculty")
+    {
+        cout << "Now displaying the faculty specific menu:" << endl;
+        for (int i = 0; i < this->itemCount; i++)
+        {
+            if (this->itemList[i]->getCustomerType() == userType)
+            {
+                cout << "*****************************************" << endl;
+                cout << *this->itemList[i];
+            }
+        }
+        //then putting usertype == student we will redisplay it.
+        cout << "As faculty can view student menu as well Therefore, Now displaying the student specific menu:" << endl;
+        userType = "student";
+        for (int i = 0; i < this->itemCount; i++)
+        {
+            if (this->itemList[i]->getCustomerType() == userType)
+            {
+                cout << "*****************************************" << endl;
+                cout << *this->itemList[i];
+            }
+        }
+        //then putting usertype == nonfaculty we will redisplay it.
+        cout << "As faculty can view Nonfaculty menu as well Therefore, Now displaying the student specific menu:" << endl;
+        userType = "nonfaculty";
+        for (int i = 0; i < this->itemCount; i++)
+        {
+            if (this->itemList[i]->getCustomerType() == userType)
+            {
+                cout << "*****************************************" << endl;
+                cout << *this->itemList[i];
+            }
+        }
+    }
+    else 
+    {
+        cout << "It is entering the first else case" << endl;
+        for (int i = 0; i < this->itemCount; i++) 
+        {
+            cout << "It is entering the second for loop" << endl;
+            cout << "*****************************************" << endl;
+            cout << *this->itemList[i];
+            if (userType == "admin" || userType == "staff") {
+                cout << "It is entering the second if case" << endl;
+                cout << "Available Quantity:" << this->itemList[i]->getQuantity() << endl;
+                cout << "Customer Type:" << this->itemList[i]->getCustomerType() << endl;
+            }
+        }
+    }
+    cout << endl;
+}
+
+void Menu::AddMenuItem() {
+    if (this->itemCount < 1000) 
+    {
+        this->itemList[this->itemCount] = new MenuItem();
+        this->itemCount++;
+    }
+    else {
+        cout << "Cannot add more items. Maximum capacity reached." << endl;
+    }
+}
+
+void Menu::AddMenuItem(string _itemName, string _itemDescription, int _price, int _quantityInStock, string _customerType) {
+    if (this->itemCount < 1000) {
+        this->itemList[this->itemCount] = new MenuItem(_itemName, _itemDescription, _price, _quantityInStock, _customerType);
+        this->itemCount++;
+    }
+    else {
+        cout << "Cannot add more items. Maximum capacity reached." << endl;
+    }
+}
+
+void Menu::RemoveItem(int itemId) {
+    bool itemFound = false;
+
+    for (int i = 0; i < this->itemCount; i++) {
+        if (this->itemList[i]->getItemId() == itemId) {
+            delete this->itemList[i];
+
+            // Shift the remaining elements to remove the gap
+            for (int j = i; j < this->itemCount - 1; j++) {
+                this->itemList[j] = this->itemList[j + 1];
+            }
+
+            itemFound = true;
+            break;
+        }
+    }
+
+    if (itemFound) {
+        cout << "Item removed successfully" << endl;
+        itemCount--; // Decrementing
+    }
+    else {
+        cout << "Item not found" << endl;
+    }
+}
+
+MenuItem* Menu::getItemPtr(int itemID) {
+    for (int i = 0; i < this->itemCount; i++) {
+        if (this->itemList[i]->getItemId() == itemID) {
+            return this->itemList[i];
+        }
+    }
+    cout << "Item not found!" << endl;
+    return nullptr;
+}
+
+void Menu::UpdateStock(int itemID, int quantity) {
+    bool itemFound = false;
+    for (int i = 0; i < this->itemCount; i++) {
+        if (this->itemList[i]->getItemId() == itemID) {
+            this->itemList[i]->UpdateStock(quantity);
+            itemFound = true;
+            break;
+        }
+    }
+    if (!itemFound) {
+        cout << "Item ID not found!" << endl;
+    }
+}
+void Menu::initializeStudentMenu() {
+    this->AddMenuItem("Bbq Pizza", "", 1200, 5, "student");
+    this->AddMenuItem("Zinger Burger", "", 360, 7, "student");
+
+    // Add other student menu items, specifying "student" as the customerType
+}
+
+void Menu::initializeFacultyMenu() {
+    this->AddMenuItem("Pizza", "", 800, 5, "faculty");
+    this->AddMenuItem("Zinger Burger", "", 360, 7, "faculty");
+
+    // Add other faculty menu items, specifying "faculty" as the customerType
+}
+
+void Menu::initializeNonFacultyMenu() {
+    this->AddMenuItem("Pizza", "", 800, 5, "nonfaculty");
+    this->AddMenuItem("Zinger Burger", "", 360, 7, "nonfaculty");
+
+    // Add other non-faculty menu items, specifying "nonfaculty" as the customerType
+}
+
+
