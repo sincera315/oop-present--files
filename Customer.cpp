@@ -220,7 +220,7 @@ void Customer::PlaceOrder() const
         default:
             cout << "Invalid choice. Please try again." << endl;
         }
-    } while (choice != 5);
+    } while (choice != 6);
 }
 
 
