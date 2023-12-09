@@ -16,17 +16,7 @@ Menu::Menu()
     this->initializeFacultyMenu();
     this->initializeNonFacultyMenu();
 }
-//Menu::Menu() {
-//    this->itemList = new MenuItem * [1000];
-//    for (int i = 0; i < 1000; ++i) 
-//    {
-//        this->itemList[i] = nullptr; // Initialize each pointer to null
-//    }
-//    this->itemCount = 2;
-//    this->initializeStudentMenu(); // Set itemCount based on initialized items
-//    this->initializeFacultyMenu();
-//    this->initializeNonFacultyMenu();
-//}
+
 
 Menu::~Menu() {
     for (int i = 0; i < itemCount; ++i) 
@@ -126,11 +116,13 @@ void Menu::AddMenuItem() {
 }
 
 void Menu::AddMenuItem(string _itemName, string _itemDescription, int _price, int _quantityInStock, string _customerType) {
-    if (this->itemCount < 1000) {
+    if (this->itemCount < 1000) 
+    {
         this->itemList[this->itemCount] = new MenuItem(_itemName, _itemDescription, _price, _quantityInStock, _customerType);
         this->itemCount++;
     }
-    else {
+    else 
+    {
         cout << "Cannot add more items. Maximum capacity reached." << endl;
     }
 }
