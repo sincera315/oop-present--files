@@ -19,5 +19,5 @@ public:
     void ViewMenus();
     void AddToMenu();
     void RemoveFromMenu();
-    void Choosecustomertype();
+    void Choosecustomertype(int view_choice);
 };
