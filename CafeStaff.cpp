@@ -5,6 +5,8 @@ using namespace std;
 
 CafeStaff::CafeStaff()
 {
+    // Ensure menu is initialized before using it
+    this->menu = new Menu();
     //calling the initializing functions 
     this->menu->initializeFacultyMenu();
     this->menu->initializeStudentMenu();
