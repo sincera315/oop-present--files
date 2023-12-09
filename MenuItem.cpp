@@ -3,8 +3,9 @@
 // STATIC VARIABLE INITILAIZED 
 int MenuItem::itemCount = 0;
 
-// default constructor (not recommended for initializing menu items)
-MenuItem::MenuItem() {
+// default constructor.
+MenuItem::MenuItem() 
+{
 	this->itemId = itemCount;
 	itemCount++;
 }
@@ -50,23 +51,28 @@ MenuItem::MenuItem(string _itemName, string _itemDescription, int _price, int _q
 //}
 
 
-bool MenuItem::UpdateStock(int count) {
-	if (count > 0) {
+bool MenuItem::UpdateStock(int count) 
+{
+	if (count > 0) 
+	{
 		this->quantityInStock += count;
 		return true;
 	}
-	else if (this->quantityInStock + count >= 0) {
+	else if (this->quantityInStock + count >= 0) 
+	{
 		this->quantityInStock += count;
 		return true;
 	}
 	return false;
 }
 
-string MenuItem::getCustomerType() {
+string MenuItem::getCustomerType() 
+{
 	return this->customerType;
 }
 
-int MenuItem::getItemId() {
+int MenuItem::getItemId() 
+{
 	return this->itemId;
 }
 
