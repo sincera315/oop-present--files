@@ -2,10 +2,21 @@
 
 int User::userCount = 1;
 
-User::User() : userName("DefaultUser"), password("DefaultPassword"), userType("DefaultUserType") 
+User::User() 
 {
+    cout << "Enter User Name: ";
+    cin >> userName;
+
+    cout << "Enter User Password: ";
+    cin >> password;
+
+    cout << "Enter User Type (student, faculty, staff, admin): ";
+    cin >> userType;
+
+    userCount++;
     userID = userCount;
 }
+
 User::~User() {
     // Destructor implementation
 }
