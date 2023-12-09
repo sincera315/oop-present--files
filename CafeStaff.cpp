@@ -91,7 +91,7 @@ void CafeStaff::ViewMenus()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         if (view_choice == 1|| (view_choice == 2)|| (view_choice == 3))
         {
-            Choosecustomertype();
+            Choosecustomertype(view_choice);
             this->menu->ViewMenu(customer_type);
         }
         else if (view_choice == 0)
@@ -126,7 +126,7 @@ void CafeStaff::AddToMenu()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         if (add_choice == 1 || (add_choice == 2) || (add_choice == 3))
         {
-            Choosecustomertype();
+            Choosecustomertype(add_choice);
             this->menu->AddMenuItem();
         }
         else if (add_choice == 0)
@@ -162,7 +162,7 @@ void CafeStaff::RemoveFromMenu()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         if (remove_choice == 1 || (remove_choice == 2) || (remove_choice == 3))
         {
-            Choosecustomertype();
+            Choosecustomertype(remove_choice);
             cout<<"Enter the number of item you want to remove"<<endl;
             cin >> itemId;
             this->menu->RemoveItem(itemId);
@@ -181,18 +181,8 @@ void CafeStaff::RemoveFromMenu()
 }
 
 //now adding the type of customer the user wants to help with:
-void CafeStaff::Choosecustomertype()
+void CafeStaff::Choosecustomertype( int view_choice)
 {
-    cout << "Enter the type of customer whose system you intend to work" << endl;
-    cout << "_______________________________________________" << endl;
-    cout << "1 Student " << endl;
-    cout << "2 Faculty" << endl;
-    cout << "3 Nonfaculty" << endl;
-    cout << "_______________________________________________" << endl;
-    cin >> view_choice;
-    // Clear the input buffer
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     if (view_choice == 1)
     {
         customer_type = "faculty";
