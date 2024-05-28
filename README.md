@@ -29,28 +29,28 @@ The Cafe Management System is designed to streamline cafe operations through a s
 - **Billing**: Automated receipt generation for orders.
 
 ##Classes and Functionality
--###User:
+- ###User:
 1)_The User class is the base class for all users in the system. It handles registration, login, and common user attributes.
 
--###Customer
+- ###Customer
 The Customer class inherits from the User class and allows customers to:
 1)_Enter their details.
 2)_Create an order.
 3)_View available menus based on their type (student or faculty).
 4)_Receive a receipt via the Billing class.
--###CafeStaff:
+- ###CafeStaff:
 The CafeStaff class inherits from the User class and allows staff to:
 1)_Accept and manage customer orders.
 2)_Check inventory and restock items as necessary.
--###Admin:
+- ###Admin:
 The Admin class inherits from the User class and allows the admin to:
 1)_Oversee all cafe operations.
 2)_View all sales and payment details.
 3)_Manage the menu by adding or changing items.
--###Payment Order:
+- ###Payment Order:
 The Billing class handles the generation of receipts for customer orders, detailing the items ordered and their costs.
 
--###File Handling:
+- ###File Handling:
 The system uses file handling to:
 Store user data for registration and login.
 1)_Maintain records of orders and inventory.
